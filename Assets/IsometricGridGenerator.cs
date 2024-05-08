@@ -11,6 +11,7 @@ public class IsometricGridGenerator : MonoBehaviour
     [SerializeField] private int gridheight = 10;
     [SerializeField] private int gridwidth = 10;
     [SerializeField] private float tilesize = 1f;
+    [SerializeField] private List<TileCells> TilesInGrid;
     
     void Start()
     {
@@ -33,7 +34,20 @@ public class IsometricGridGenerator : MonoBehaviour
 
                 newtile.transform.position = new Vector2(i,j);
                 newtile.name = i + "," + j;
+                TilesInGrid.Add(newtile.GetComponent<TileCells>());
             }
         }
     }
+   
+    [Button]
+    void FindNeighborsTiles()
+    {
+        for (int i = 0; i < TilesInGrid.Count;i++)
+        {
+            TilesInGrid[i].AddNeighbor(TilesInGrid);
+        }
+    }
 }
+
+    
+
