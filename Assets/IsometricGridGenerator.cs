@@ -29,10 +29,9 @@ public class IsometricGridGenerator : MonoBehaviour
             for (int j = 0; j < grid.TerrainGrid[i].Count; j++)
             {
                 GameObject newtile = Instantiate(tile[grid.TerrainGrid[i][j].TileType], transform);
-                float posX = (i * tilesize + j * tilesize) / 2f;
-                float posY = (i * tilesize - j * tilesize) / 2f;
+              
 
-                newtile.transform.position = new Vector2(posX, posY);
+                newtile.transform.position = new Vector2(i,j);
                 newtile.name = i + "," + j;
             }
         }
